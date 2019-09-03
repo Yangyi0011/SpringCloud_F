@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.yangyi.springcloud</groupId>
+		<artifactId>sc-f-parent-01</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<artifactId>service-consumer-hystrix-turbine</artifactId>
+	<packaging>jar</packaging>
+
+	<name>service-consumer-hystrix-turbine</name>
+	<description>微服务-SpringCloud：服务监控-turbine监控多个支持Hystrix-Dashboard的服务</description>
+
+	<dependencies>
+
+        <!--引入通用API包-->
+        <dependency>
+            <groupId>com.yangyi.springcloud</groupId>
+            <artifactId>sc-f-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!--监控信息可视化，是 HystrixDashboard 的依赖-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+        <!--Web：SpringMVC-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+        <!--Eureka-Client-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+
+        <!--Hystrix：服务熔断、服务降级-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+		</dependency>
+
+        <!--Hystrix-Dashboard：服务熔断监控，依赖Hystrix、Actuator-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+		</dependency>
+
+        <!--Hystrix-Turbine：监控多个支持 Hystrix-Dashboard 的服务-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-turbine</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

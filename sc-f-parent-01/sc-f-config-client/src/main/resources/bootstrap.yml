@@ -1,0 +1,27 @@
+server:
+  port: 3355
+
+eureka:
+  # Eureka 客户端信息
+  client:
+    service-url:
+      # 指明要注册到哪个 Eureka 服务中心
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+
+spring:
+  application:
+    name: sc-f-config-client
+  cloud:
+    config:
+      name: sc-f-config-client #要从 github 上读取的资源的名称，注意：没有.yml后缀
+      label: master #所属分支
+      profile: test  #本次访问的配置项
+      #本微服务启动后，先去找3344端口号的服务，即 Config-Server，通过SpringCloud获取 gitHub 的服务地址
+      uri: http://localhost:3344
+
+      #服务发现：从Eureka获取 Config-Server，可以配置多个 Config-Server 保证高可用
+      discovery:
+        enabled: true
+        service-id: sc-f-config-server #分布式配置中心
+
+

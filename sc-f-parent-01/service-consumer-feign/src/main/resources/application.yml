@@ -1,0 +1,36 @@
+server:
+  port: 9090
+
+#监控信息完善：实例的说明信息
+info:
+  app.name: service-consumer-feign
+  company.name: www.yangyi.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
+eureka:
+  # Eureka 实例信息
+  instance:
+    instance-id: service-consumer-feign   #自定义服务名称的相关信息
+    prefer-ip-address: true #访问路径可以显示 IP 地址
+    metadata-map:
+      # hystrix-turbine监控集群的集群名称
+      cluster: my-hystrix-turbine
+
+  # Eureka 客户端信息
+  client:
+    #register-with-eureka: false  #服务消费者，不再注册自己？
+    service-url:
+      # 指明要注册到哪个 Eureka 服务中心
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+
+#开启 feign 对 hystrix 的支持，在D版本的Spring Cloud之后，它没有默认打开
+# 注：本服务的 hystrix 实现是被抽取到 sc-f-api 中当做公告模块去了
+feign:
+  hystrix:
+    enabled: true   #即使有警告也要加上这个，否则不能用 hystrix 熔断功能
+
+spring:
+  application:
+   # 服务名称，很重要，这在以后的服务与服务之间相互调用一般都是根据这个name。
+    name: service-consumer-feign

@@ -1,0 +1,49 @@
+server:
+  port: 9527
+
+#监控信息完善：实例的说明信息
+info:
+  app.name: service-gateway-zuul
+  company.name: www.yangyi.com
+  build.artifactId: ${project.artifactId}
+  build.version: ${project.version}
+
+eureka:
+# Eureka 实例信息
+  instance:
+    instance-id: service-gateway-zuul   #自定义服务名称的相关信息，可以写域名
+    prefer-ip-address: true   #访问路径可以显示 IP 地址
+
+  # Eureka 客户端信息
+  client:
+    service-url:
+      #指定要注册到哪个服务中心
+      #单机版：defaultZone: http://localhost:7001/eureka/
+      #集群版：此处预先配置了域名映射，文件路径C:\Windows\System32\drivers\etc\hosts
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+
+# 未指定路由【routes】之前，通过Zuul的访问规则：域名:端口号/服务id/Restful Api
+# 不用路由访问：http://localhost:8001/employee/1
+# 使用路由访问：http://localhost:9527/service-employee/employee/1
+# 做了域名映射的路由访问：http://myzuul.com:9527/service-employee/employee/1
+zuul:
+  #路由公共前缀，一般是公司标识，设置后不加上无法访问
+  prefix: /yangyi
+  #忽略掉真实服务id，只能通过路由映射路径访问，"*"：表示忽略所有真实服务id
+  ignored-services: "*" #单个：service-provider
+  #指定了路由【routes】之后，通过Zuul的访问规则：域名:端口号/path/Restful Api
+  routes:
+    #通过 Zuul 访问，所有以 /myemp/ 开头的请求都转发给 service-employee 服务
+    myemp:
+      path: /myemp/**
+      serviceId: service-provider
+    #通过 Zuul 访问，所有以 /myfeign/ 开头的请求都转发给 service-consumer-feign 服务
+    myfeign:
+      path: /myfeign/**
+      serviceId: service-consumer-feign
+
+spring:
+  application:
+    name: service-gateway-zuul
+
+

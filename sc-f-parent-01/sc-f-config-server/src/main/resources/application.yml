@@ -1,0 +1,34 @@
+server:
+  port: 3344
+
+eureka:
+  # Eureka 客户端信息
+  client:
+    #register-with-eureka: false  #服务消费者，不再注册自己？
+    service-url:
+      # 指明要注册到哪个 Eureka 服务中心
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          # git仓库远程地址
+          uri: https://github.com/Yangyi0011/SpringCloud-F-Config.git
+          #配置仓库路径
+          search-paths: respo
+          username:   #公开仓库不用写
+          password:   #公开仓库不用写
+      #访问的分支
+      label: master
+  application:
+    name: sc-f-config-server
+
+
+#远程访问规则：
+# 域名:端口/{application}/{profile}[/{label}]
+# 域名:端口/{application}-{profile}.yml  如：http://localhost:3344/application-dev.yml
+# 域名:端口/{label}/{application}-{profile}.yml
+# 域名:端口/{application}-{profile}.properties
+# 域名:端口/{label}/{application}-{profile}.properties

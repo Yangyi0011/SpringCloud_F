@@ -1,0 +1,5 @@
+E:\JavaWeb\IDEASpace\SpringCloud_F\sc-f-parent-01\sc-f-api\src\main\java\com\yangyi\springcloud\ApiApp.java
+E:\JavaWeb\IDEASpace\SpringCloud_F\sc-f-parent-01\sc-f-api\src\main\java\com\yangyi\springcloud\entities\Employee.java
+E:\JavaWeb\IDEASpace\SpringCloud_F\sc-f-parent-01\sc-f-api\src\main\java\com\yangyi\springcloud\config\MyConfigBean.java
+E:\JavaWeb\IDEASpace\SpringCloud_F\sc-f-parent-01\sc-f-api\src\main\java\com\yangyi\springcloud\service\EmployeeClientService.java
+E:\JavaWeb\IDEASpace\SpringCloud_F\sc-f-parent-01\sc-f-api\src\main\java\com\yangyi\springcloud\service\impl\EmployeeClientService_Hystrix.java

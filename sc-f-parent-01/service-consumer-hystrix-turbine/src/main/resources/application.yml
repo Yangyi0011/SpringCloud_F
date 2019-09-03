@@ -1,0 +1,55 @@
+server:
+  port: 9001
+
+#监控信息完善：实例的说明信息
+info:
+  app.name: hystrix-turbine
+  company.name: www.yangyi.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
+eureka:
+  # Eureka 实例信息
+  instance:
+    instance-id: hystrix-turbine   #自定义服务名称的相关信息
+    prefer-ip-address: true   #访问路径可以显示 IP 地址
+
+  # Eureka 客户端信息
+  client:
+    #register-with-eureka: false  # HystrixDashboard 监控，不再注册自己？
+    service-url:
+      # 指明要注册到哪个 Eureka 服务中心
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+
+# Hystrix-Dashboard 监控需要加上这个，否则会一直在 ping
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"
+
+# Hystrix-Turbine：对支持 Hystrix-Dashboard 的微服务进行联合监控
+turbine:
+  #要联合监控服务的列表，表明监控哪些服务多个使用","分割，这些微服务需要支持 Hystrix-Dashboard
+  app-config: SERVICE-CONSUMER-FEIGN,SERVICE-CONSUMER-RIBBON
+  #指定集群名称，当服务数量非常多的时候，可以启动多个Turbine服务来构建不同的聚合集群，
+    #而该参数可以用来区分这些不同的聚合集群，同时该参数值可以再Hystrix仪表盘中用来定位不同的聚合集群，
+    #只需在Hystrix Stream的URL中通过cluster参数来指定，
+    #当clusterNameExpression: metadata['cluster']时，假设想要监控的应用配置了eureka.instance.metadata-map.cluster: ABC，
+    #则需要配置，同时turbine.aggregator.clusterConfig: ABC
+  cluster-name-expression: metadata['cluster'] # new String("default")
+  #监控时结合域名与端口号进行区分
+  combine-host-port: true
+  #聚合器
+  aggregator:
+    #指定聚合哪些集群,多个使用","分割，默认为default
+    cluster-config: my-hystrix-turbine #默认为 defualt
+  # Hystrix-Turbine 收集 Hystrix-Dashboard 信息的访问后缀
+  instanceUrlSuffix: /hystrix.stream
+
+spring:
+  application:
+    name: hystrix-turbine-9001

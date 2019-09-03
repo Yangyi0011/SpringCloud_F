@@ -1,0 +1,4 @@
+spring:
+  application:
+    #因为 bootstrap.yml 的优先级更高，name必须要与 bootstrap.yml 中的name保持一致
+    name: sc-f-config-client

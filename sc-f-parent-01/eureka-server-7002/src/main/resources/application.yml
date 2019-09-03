@@ -1,0 +1,36 @@
+server:
+  port: 7002
+
+#监控信息完善：实例的说明信息
+info:
+  app.name: eurka-server-7002   #服务名称
+  company.name: www.yangyi.com  #公司信息
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
+#默认情况下eureka server也是一个eureka client ,必须要指定一个 server
+#通过eureka.client.registerWithEureka：false和fetchRegistry：false来表明自己是一个eureka server.
+eureka:
+  # Eureka 实例信息
+  instance:
+    # eureka 服务端的实例名称，localhost指本机
+    hostname: eureka7002.com   #此处预先配置了域名映射，文件路径C:\Windows\System32\drivers\etc\hosts
+    instance-id: eurka-server-7002   #自定义服务名称的相关信息
+    prefer-ip-address: true   #访问路径可以显示 IP 地址
+
+  # Eureka 客户端信息
+  client:
+    #表示不在注册中心注册自己，即只有客户端需要注册，服务端不需要注册
+    registerWithEureka: false
+    #表示自己就是注册中心，只用来维护服务实例，不需要去检索服务。
+    fetchRegistry: false
+    serviceUrl:
+      #设置 Eureka Server 的交互地址【对外暴露】，查询服务和注册服务都要依赖该地址
+      #单机版：defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      #集群板，7002下挂着7001、7003
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7003.com:7003/eureka/
+
+spring:
+  application:
+    # 服务名称，很重要，这在以后的服务与服务之间相互调用一般都是根据这个name。
+    name: eurka-server-7002

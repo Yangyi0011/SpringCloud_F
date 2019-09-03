@@ -1,0 +1,5 @@
+com\yangyi\springcloud\service\impl\EmployeeClientService_Hystrix.class
+com\yangyi\springcloud\entities\Employee.class
+com\yangyi\springcloud\config\MyConfigBean.class
+com\yangyi\springcloud\ApiApp.class
+com\yangyi\springcloud\service\EmployeeClientService.class
