@@ -1,4 +1,4 @@
-package com.yangyi.springcloud.entities;
+package com.yangyi.springcloud.entity;
 
 /**
  * Created by IntelliJ IDEA.
@@ -33,7 +33,7 @@ import java.io.Serializable;
         dept.setName("xx").setXX().setXXX()....
  */
 //@AllArgsConstructor //全参构造函数
-@Accessors  //链式风格访问？
+@Accessors(chain = true)  //链式风格访问？
 @NoArgsConstructor  //无参构造器
 @Data   //生成每个属性的 get、set、toString、equals、hashCode 方法
 public class Employee implements Serializable {
