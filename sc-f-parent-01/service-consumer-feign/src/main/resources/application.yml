@@ -19,7 +19,7 @@ eureka:
 
   # Eureka 客户端信息
   client:
-    #register-with-eureka: false  #服务消费者，不再注册自己？
+    #服务消费者
     service-url:
       # 指明要注册到哪个 Eureka 服务中心
       defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/

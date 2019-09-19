@@ -40,7 +40,7 @@ public class EmployeeController {
         return emps;
     }
 
-    @GetMapping("/employee")
+    @PostMapping("/employee")
     public Employee addEmp(Employee employee){
         Employee emp = employeeClientService.addEmp(employee);
         return emp;
