@@ -1,7 +1,7 @@
 package com.yangyi.springcloud.service.impl;
 
 import com.yangyi.springcloud.dao.EmployeeMapper;
-import com.yangyi.springcloud.entities.Employee;
+import com.yangyi.springcloud.entity.Employee;
 import com.yangyi.springcloud.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

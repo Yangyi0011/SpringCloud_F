@@ -1,7 +1,7 @@
 package com.yangyi.springcloud.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.yangyi.springcloud.entities.Employee;
+import com.yangyi.springcloud.entity.Employee;
 import com.yangyi.springcloud.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

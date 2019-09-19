@@ -10,14 +10,14 @@
     </sql>
 
     <!--public Employee findOne(@Param("id") String id);-->
-    <select id="findOne" resultType="com.yangyi.springcloud.entities.Employee">
+    <select id="findOne" resultType="com.yangyi.springcloud.entity.Employee">
         SELECT id,<include refid="employeeColumns"/>
         FROM tab_employee
         WHERE id = #{id}
     </select>
 
     <!--public Collection<Employee> findAll();-->
-    <select id="findAll" resultType="com.yangyi.springcloud.entities.Employee">
+    <select id="findAll" resultType="com.yangyi.springcloud.entity.Employee">
         SELECT id,<include refid="employeeColumns"/>
         FROM tab_employee
     </select>

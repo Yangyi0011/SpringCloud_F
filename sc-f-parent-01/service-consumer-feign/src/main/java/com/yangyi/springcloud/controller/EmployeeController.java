@@ -1,6 +1,6 @@
 package com.yangyi.springcloud.controller;
 
-import com.yangyi.springcloud.entities.Employee;
+import com.yangyi.springcloud.entity.Employee;
 import com.yangyi.springcloud.service.EmployeeClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

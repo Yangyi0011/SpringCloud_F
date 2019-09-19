@@ -1,6 +1,6 @@
 package com.yangyi.springcloud.dao;
 
-import com.yangyi.springcloud.entities.Employee;
+import com.yangyi.springcloud.entity.Employee;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

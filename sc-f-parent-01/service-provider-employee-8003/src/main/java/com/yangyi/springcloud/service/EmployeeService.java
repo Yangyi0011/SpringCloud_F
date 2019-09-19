@@ -1,6 +1,6 @@
 package com.yangyi.springcloud.service;
 
-import com.yangyi.springcloud.entities.Employee;
+import com.yangyi.springcloud.entity.Employee;
 
 import java.util.List;
 
